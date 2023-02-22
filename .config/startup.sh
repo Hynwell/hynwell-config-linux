@@ -16,23 +16,28 @@
 
 # Дополнения и настройка для ZSH
 #curl https://raw.githubusercontent.com/AdamsGH/linux_config/main/.zshenv > ~/.zshenv
-#mkdir -p  ~/.config/zsh
-#curl https://raw.githubusercontent.com/AdamsGH/linux_config/main/.config/zsh/.zshrc > ~/.config/zsh/.zshrc
-#curl https://raw.githubusercontent.com/AdamsGH/linux_config/main/.config/zsh/.alias.zsh > ~/.config/zsh/.alias.zsh
-#curl https://raw.githubusercontent.com/AdamsGH/linux_config/main/.config/zsh/.p10k.zsh > ~/.config/zsh/.p10k.zsh
+
 #chsh --shell /bin/zsh $USER
-#git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.config/zsh/powerlevel10k
+
 
 
 #root
-#apt install sudo git
-#read -p "Введите название учетной записи для добавление в sudo " USERNAME
-#usermod -aG sudo "${USERNAME}"
-#echo "${USERNAME}   ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers.d/myconfig
+apt install sudo git
+read -p "Введите название учетной записи для добавление в sudo " USERNAME
+usermod -aG sudo "${USERNAME}"
+echo "${USERNAME}   ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers.d/myconfig
 
 #user
-#sudo apt update && sudo apt upgrade -y
-#sudo apt install zsh
+sudo apt update && sudo apt upgrade -y
+sudo apt install zsh
+ssh-keygen -t rsa -b 4096 -C "hynwellG@gmail.com"
+cat .ssh/id_rsa.pub 
+git init .
+git remote add origin git@github.com:Hynwell/hynwell-config-linux.git
+git pull origin main
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.config/zsh/powerlevel10k
+git clone git@github.com:marlonrichert/zsh-autocomplete.git ~/.config/zsh/plugins/zsh-autocomplete
+git clone git@github.com:zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/plugins/zsh-syntax-highlighting
 
 
 
