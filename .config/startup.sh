@@ -10,9 +10,11 @@ echo "---Linux UPDATE---"
 sudo apt update && sudo apt upgrade -y
 
 echo "---Install SOFT---"
-for software_list in git zsh bat gtop micro screen tldr curl 
+
+softwares_list=(git zsh bat gtop micro screen tldr curl) 
+for software_list in ${softwares_list[@]}
 	do
-		sudo apt install $software_list -y
+		sudo apt install ${software_list} -y
 	done
 
 echo "---Install ZSH---"
@@ -30,8 +32,11 @@ git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.
 echo 'POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true' >>! ~/.zshrc
 chsh --shell /bin/zsh $USER
 
+
 echo "---Install Docker---"
-for software_list_for_docker in ca-certificates gnupg lsb-release
+
+softwares_list_for_docker=(ca-certificates gnupg lsb-release)
+for software_list_for_docker in ${softwares_list_for_docker[@]}
 	do
 		sudo apt install $software_list_for_docker -y
 	done
