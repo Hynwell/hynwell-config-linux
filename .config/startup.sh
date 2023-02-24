@@ -59,35 +59,11 @@ docker compose version
 read -p "Уставить pytnon3.11 (y/n?): " inpy
 if [[ "$inpy" == "y" ]]; then
 
-    echo "---Install Python3.11---"
-
-    # Установка необходимого софта, для сборки python
-    softwares_list_for_python=(build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev pkg-config)
-    for software_list_for_python in ${softwares_list_for_python[@]}
-        do
-            sudo apt install $software_list_for_python -y
-        done
+    echo "---DOWNLOAD SCRIPT---"
     
-    # Скачиваем файлы python3.11
-    curl -o ~/download/Python-3.11.1.tgz https://www.python.org/ftp/python/3.11.1/Python-3.11.1.tgz
-    tar -xf ~/download/Python-3.11.1.tgz -C ~/download/
-
-    # Сборка Python
-    cd ~/download/Python-3.11.1
-    ./configure --enable-optimizations
-    make -j $(nproc)
-    sudo make altinstall
-
-    # Удаление исходников
-    cd ~/
-    sudo rm -rf ~/download/Python-3.11.1.tgz ~/download/Python-3.11.1
-
-    echo "---THE END---"
-    python3.11 --version
-    
-    # Установить "python" по умолчанию
-    sudo ln -s /usr/local/bin/python
-    sudo ln -s /usr/local/bin/python3.11 /usr/local/bin/python
+    git clone --quiet https://github.com/Hynwell/install-python3.11.git ~/scripts/install-python3.11.git
+    chmod +x ~/scripts/install-python3.11/install-python3.11.sh
+    ~/scripts/install-python3.11/install-python3.11.sh
 
 elif [[ "$inpy" == "n" ]]; then
     echo "Отмена установки Python"
