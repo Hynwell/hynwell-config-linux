@@ -10,7 +10,7 @@ export CONFIGDIR="$HOME/.config"
 
 source $CONFIGDIR/zsh/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#[[ ! -f $CONFIGDIR/zsh/.p10k.zsh ]] || source $CONFIGDIR/zsh/.p10k.zsh
+[[ ! -f $CONFIGDIR/zsh/.p10k2.zsh ]] || source $CONFIGDIR/zsh/.p10k2.zsh
 
 # Alias
 source ~/.config/zsh/.alias
