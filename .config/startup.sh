@@ -60,8 +60,8 @@ read -p "Уставить pytnon3.11 (y/n?): " inpy
 if [[ "$inpy" == "y" ]]; then
 
     echo "---DOWNLOAD SCRIPT---"
-    
-    git clone --quiet https://github.com/Hynwell/install-python3.11.git ~/scripts/install-python3.11.git
+
+    git clone --quiet https://github.com/Hynwell/install-python3.11.git ~/scripts/install-python3.11
     chmod +x ~/scripts/install-python3.11/install-python3.11.sh
     ~/scripts/install-python3.11/install-python3.11.sh
 
