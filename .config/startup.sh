@@ -69,7 +69,6 @@ if [[ "$inpy" == "y" ]]; then
         done
     
     # Скачиваем файлы python3.11
-    mkdir -p ~/download
     curl -o ~/download/Python-3.11.1.tgz https://www.python.org/ftp/python/3.11.1/Python-3.11.1.tgz
     tar -xf ~/download/Python-3.11.1.tgz -C ~/download/
 
@@ -86,11 +85,16 @@ if [[ "$inpy" == "y" ]]; then
     echo "---THE END---"
     python3.11 --version
     
+    # Установить "python" по умолчанию
+    sudo ln -s /usr/local/bin/python
+    sudo ln -s /usr/local/bin/python3.11 /usr/local/bin/python
+
 elif [[ "$inpy" == "n" ]]; then
     echo "Отмена установки Python"
 else
   echo "Выбранно не верное значение -> Отмена установки Python"
 fi
+
 
 # start ZSH
 zsh
