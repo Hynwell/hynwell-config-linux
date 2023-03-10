@@ -91,6 +91,8 @@ function install_docker {
     sudo apt-get update
     sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 
+    mkdir -p /opt/docker
+
     echo "--------------------------------------------------------------------------------------------"
     echo "---------------------------------------------END--------------------------------------------"
     echo "--------------------------------------------------------------------------------------------"
@@ -107,6 +109,24 @@ function install_docker {
 
 }
 
+function install_just {
+
+    echo "--------------------------------------------------------------------------------------------"
+    echo "----------------------------------------Install Just----------------------------------------"
+    echo "--------------------------------------------------------------------------------------------"
+
+    curl -q 'https://proget.makedeb.org/debian-feeds/prebuilt-mpr.pub' | gpg --dearmor | sudo tee /usr/share/keyrings/prebuilt-mpr-archive-keyring.gpg 1> /dev/null
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/prebuilt-mpr-archive-keyring.gpg] https://proget.makedeb.org prebuilt-mpr $(lsb_release -cs)" | sudo tee /etc/apt/sources.list.d/prebuilt-mpr.list
+    apt update
+
+    apt install just -y
+
+    echo "                                                                                            "
+    echo "                                                                                            "
+    echo "--------------------------------------------------------------------------------------------"
+    echo "--------------------------------------------------------------------------------------------"
+
+}
 
 function install_python {
 
