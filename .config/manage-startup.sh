@@ -120,7 +120,8 @@ function install_just {
     apt update
 
     apt install just -y
-
+    curl -o /opt/docker/.justfile https://raw.githubusercontent.com/Hynwell/hynwell-config-linux/main/.config/just/docker.justfile
+    
     echo "                                                                                            "
     echo "                                                                                            "
     echo "--------------------------------------------------------------------------------------------"
