@@ -1,8 +1,13 @@
+### PATH VARIABLES ###
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.config/zsh/.zsh_history
+PYTHON_PATH="$HOME/.local/bin"            # Путь к бинарникам Python
+HISTFILE="$HOME/.zsh_history"             # Файл, в который будет записываться вся история команд на zsh
+EDITOR="vim"                              # Редактор по умолчанию
+HISTSIZE=10000                            # Количество сохраненных команд в файле
+SAVEHIST=10000                            # Как много команд шелл должен помнить в одной сессии (по команде history)
+setopt appendhistory                      # Сохраняем всю историю в файл, чтобы она не стиралась, если мы выключим и включим шелл
+
+
 
 export CONFIGDIR="$HOME/.config"
 
