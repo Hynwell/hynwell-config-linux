@@ -120,8 +120,10 @@ function install_just {
     apt update
 
     apt install just -y
+
+#    echo "zstyle :compinstall filename '$CONFIGDIR/just/completions/just.zsh'" >> ~/.zshrc
     curl -o /opt/docker/.justfile https://raw.githubusercontent.com/Hynwell/hynwell-config-linux/main/.config/just/docker.justfile
-    
+
     echo "                                                                                            "
     echo "                                                                                            "
     echo "--------------------------------------------------------------------------------------------"

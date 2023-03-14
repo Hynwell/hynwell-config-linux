@@ -1,10 +1,5 @@
-alias -g ..='cd ..'
-alias -g ...='cd ../..'
-alias -g ....='cd ../../..'
-alias -g .....='cd ../../../..'
-alias -g ......='cd ../../../../..'
-
 alias j=just
+alias d=just
 
 alias lsa='ls -lah'
 alias l='ls -lah'

@@ -4,15 +4,23 @@ set shell := ["zsh", "-uc"]
 commands:
   just --list
 
-start:
-  docker compose down 
+start: 
   docker compose up -d
 
 stop:
   docker compose down
 
-logs:
+update:
+  docker compose up -d --force-recreate
+
+l:
+  docker compose logs
+
+l-100:
+  docker logs -f --tail=100
+
+l-all:
   docker ps -q | xargs -L 1 docker logs
 
-prom_apply:
-  docker compose up -d --force-recreate
+ps:
+  docker ps
