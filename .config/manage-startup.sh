@@ -52,7 +52,7 @@ function install_zsh {
 
     curl https://raw.githubusercontent.com/Hynwell/hynwell-config-linux/main/.zshrc > ~/.zshrc
     curl https://raw.githubusercontent.com/Hynwell/hynwell-config-linux/main/.config/zsh/.p10k.zsh > ~/.config/zsh/.p10k.zsh
-    curl https://raw.githubusercontent.com/Hynwell/hynwell-config-linux/main/.config/zsh/.alias > ~/.config/zsh/.alias
+    curl https://raw.githubusercontent.com/Hynwell/hynwell-config-linux/main/.config/zsh/.alias.zsh > ~/.config/zsh/.alias.zsh
 
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.config/zsh/powerlevel10k
     git clone --depth=1 https://github.com/marlonrichert/zsh-autocomplete.git ~/.config/zsh/plugins/zsh-autocomplete
@@ -215,9 +215,10 @@ function main {
         install_soft
         install_zsh
         install_docker
+        install_just
 
     elif [ "$selected" = "1" ]; then
-            soft_options=("➜ install base soft" "➜install zsh" "➜ install Docker" "➜ install Python3.11" "⬅ Back" "✖ Exit Menu")
+            soft_options=("➜ install base soft" "➜install zsh" "➜install just" "➜ install Docker" "➜ install Python3.11" "⬅ Back" "✖ Exit Menu")
             select_option "${soft_options[@]}"
             soft_selected=$?
             if [ "$soft_selected" = "0" ]; then
@@ -228,13 +229,16 @@ function main {
                 install_zsh
             elif [ "$soft_selected" = "2" ]; then
                 update_linux
-                install_docker
+                install_just
             elif [ "$soft_selected" = "3" ]; then
                 update_linux
-                install_python
+                install_docker
             elif [ "$soft_selected" = "4" ]; then
-                main
+                update_linux
+                install_python
             elif [ "$soft_selected" = "5" ]; then
+                main
+            elif [ "$soft_selected" = "56" ]; then
                 exit_menu
             fi
 
