@@ -13,13 +13,13 @@ stop:
 update:
   docker compose up -d --force-recreate
 
-l:
+logs:
   docker compose logs
 
-l-100:
-  docker logs -f --tail=100
+logs-100:
+  docker compose logs -f --tail=100
 
-l-all:
+logs-all:
   docker ps -q | xargs -L 1 docker logs
 
 ps:
