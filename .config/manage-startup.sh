@@ -8,7 +8,7 @@ function update_linux {
     echo "----------------------------------Update and Upgrade Linux----------------------------------"
     echo "--------------------------------------------------------------------------------------------"
 
-    sudo apt update && sudo apt upgrade -y
+    apt update && apt upgrade -y
 
     echo "--------------------------------------------------------------------------------------------"
     echo "---------------------------------------------END--------------------------------------------"
@@ -28,7 +28,7 @@ function install_soft {
     softwares_list=(git vim zsh bat gtop micro screen tldr curl) 
     for software_list in ${softwares_list[@]}
         do
-            sudo apt install ${software_list} -y
+            apt install ${software_list} -y
         done
 
     echo "--------------------------------------------------------------------------------------------"
@@ -46,7 +46,7 @@ function install_zsh {
     echo "-----------------------------------------Install ZSH----------------------------------------"
     echo "--------------------------------------------------------------------------------------------"
 
-    sudo apt install zsh curl git -y 
+    apt install zsh curl git -y 
 
     mkdir -p ~/.config/zsh/plugins/
 
@@ -79,17 +79,17 @@ function install_docker {
     softwares_list_for_docker=(ca-certificates gnupg lsb-release)
     for software_list_for_docker in ${softwares_list_for_docker[@]}
         do
-            sudo apt install $software_list_for_docker -y
+            apt install $software_list_for_docker -y
         done
 
-    sudo mkdir -m 0755 -p /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    mkdir -m 0755 -p /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
     echo \
     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
-    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-    sudo apt-get update
-    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+    apt-get update
+    apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 
     mkdir -p /opt/docker
 
@@ -115,8 +115,8 @@ function install_just {
     echo "----------------------------------------Install Just----------------------------------------"
     echo "--------------------------------------------------------------------------------------------"
 
-    curl -q 'https://proget.makedeb.org/debian-feeds/prebuilt-mpr.pub' | gpg --dearmor | sudo tee /usr/share/keyrings/prebuilt-mpr-archive-keyring.gpg 1> /dev/null
-    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/prebuilt-mpr-archive-keyring.gpg] https://proget.makedeb.org prebuilt-mpr $(lsb_release -cs)" | sudo tee /etc/apt/sources.list.d/prebuilt-mpr.list
+    curl -q 'https://proget.makedeb.org/debian-feeds/prebuilt-mpr.pub' | gpg --dearmor | tee /usr/share/keyrings/prebuilt-mpr-archive-keyring.gpg 1> /dev/null
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/prebuilt-mpr-archive-keyring.gpg] https://proget.makedeb.org prebuilt-mpr $(lsb_release -cs)" | tee /etc/apt/sources.list.d/prebuilt-mpr.list
     apt update
 
     apt install just -y
